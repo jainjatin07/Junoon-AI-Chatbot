@@ -11,8 +11,7 @@ CORS(app)
 
 model = ChatMistralAI(
     model="mistral-small-2603",
-    temperature=0.7,
-    max_tokens=100
+    temperature=1.0
 )
 
 conversations = {}
