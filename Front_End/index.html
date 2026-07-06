@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junoon AI is your interactive personal AI companion, featuring customizable personality modes (romantic, happy, sad) and intelligent conversations.">
+    <title>Junoon AI - Your Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-mood="romantic">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- INTRO OVERLAY — Apple-style splash reveal  -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="intro-overlay" class="intro-overlay">
+    <div class="intro-bg-particles" id="intro-particles"></div>
+    <div class="intro-content">
+        <div class="intro-logo" id="intro-logo">
+            <div class="intro-logo-ring"></div>
+            <div class="intro-logo-ring ring-2"></div>
+            <i class="fa-solid fa-heart-pulse intro-logo-icon"></i>
+        </div>
+        <h1 class="intro-title" id="intro-title">
+            <span class="intro-word" style="--i:0">Junoon</span>
+            <span class="intro-word" style="--i:1">AI</span>
+        </h1>
+        <p class="intro-tagline" id="intro-tagline">
+            <span class="intro-char-wrap">Feel the connection.</span>
+        </p>
+        <div class="intro-line" id="intro-line"></div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- DOODLES LAYER — floating background art    -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="doodles-layer" id="doodles-layer"></div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- AMBIENT PARTICLES — mood-reactive          -->
+<!-- ═══════════════════════════════════════════ -->
+<canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- MAIN APP                                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="app-container" id="app-container">
+
+    <!-- Header -->
+    <header class="chat-header" id="chat-header">
+        <div class="brand">
+            <div class="logo-container" id="logo-container">
+                <i class="fa-solid fa-heart-pulse logo-icon" id="logo-icon"></i>
+                <span class="status-dot"></span>
+            </div>
+            <div class="brand-info">
+                <h1>Junoon AI</h1>
+                <p id="brand-subtitle">Always here to listen</p>
+            </div>
+        </div>
+
+        <div class="personality-selector">
+            <div class="mode-buttons" id="mode-buttons">
+                <button class="mode-btn active" data-mode="default" id="mode-btn-romantic">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Romantic</span>
+                </button>
+                <button class="mode-btn" data-mode="1" id="mode-btn-happy">
+                    <i class="fa-solid fa-face-smile"></i>
+                    <span>Happy</span>
+                </button>
+                <button class="mode-btn" data-mode="2" id="mode-btn-sad">
+                    <i class="fa-solid fa-cloud-rain"></i>
+                    <span>Sad</span>
+                </button>
+                <!-- Active pill slider -->
+                <div class="mode-slider" id="mode-slider"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chat Area -->
+    <main class="chat-main" id="chat-main">
+        <div id="chat-messages" class="chat-messages">
+            <div class="welcome-card" id="welcome-card">
+                <div class="welcome-aura"></div>
+                <div class="welcome-icon" id="welcome-icon">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <h3 class="welcome-title">Welcome to Junoon AI</h3>
+                <p id="personality-intro">I'm currently feeling <strong class="mood-highlight">romantic</strong> 💖</p>
+                <div class="suggestions" id="suggestions">
+                    <button class="suggestion-chip" onclick="sendSuggestion('Tell me a short story')">
+                        <i class="fa-solid fa-book-open"></i> Tell me a short story
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion('What is your dream?')">
+                        <i class="fa-solid fa-cloud"></i> What is your dream?
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion('Write me a poem')">
+                        <i class="fa-solid fa-feather-pointed"></i> Write me a poem
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="typing-indicator" class="typing-indicator hidden">
+            <div class="typing-bubble">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Input Footer -->
+    <footer class="chat-footer" id="chat-footer">
+        <form id="chat-form" onsubmit="event.preventDefault(); sendMessage();" class="input-container">
+            <input
+                type="text"
+                id="message"
+                placeholder="Type your message..."
+                autocomplete="off"
+            />
+            <button type="submit" id="send-btn" aria-label="Send message">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
