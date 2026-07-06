@@ -3,7 +3,7 @@
 // ══════════════════════════════════════════
 const API_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:")
     ? "http://127.0.0.1:5000"
-    : "https://your-render-app.onrender.com";
+    : "https://junoon-ai-backend.onrender.com";
 
 const sessionId = crypto.randomUUID();
 let currentMode = "default";
