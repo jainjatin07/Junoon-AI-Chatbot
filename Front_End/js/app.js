@@ -134,7 +134,13 @@ function resizeCanvas() {
     particleCanvas.width = window.innerWidth;
     particleCanvas.height = window.innerHeight;
 }
-window.addEventListener("resize", resizeCanvas);
+window.addEventListener("resize", () => {
+    resizeCanvas();
+    const activeBtn = document.querySelector(".mode-btn.active");
+    if (activeBtn) {
+        updateSlider(activeBtn);
+    }
+});
 resizeCanvas();
 
 class Particle {
