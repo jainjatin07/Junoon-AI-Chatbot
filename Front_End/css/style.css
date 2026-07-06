@@ -671,7 +671,7 @@ body {
     outline: none;
     color: var(--text-main);
     font-family: inherit;
-    font-size: 15px;
+    font-size: 16px;
     padding: 10px 0;
 }
 .input-container input::placeholder { color: var(--text-muted); }
@@ -752,11 +752,11 @@ body {
     .app-container {
         position: fixed;
         top: 0;
-        bottom: 0;
+        bottom: auto;
         left: 0;
         right: 0;
         max-width: 100%;
-        height: auto;
+        height: 100%;
         max-height: none;
         margin: 0;
         border-radius: 0;

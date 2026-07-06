@@ -364,9 +364,47 @@ async function sendMessage() {
 }
 
 // ══════════════════════════════════════════
+// MOBILE VIEWPORT KEYBOARD AND SCALING MANAGEMENT
+// ══════════════════════════════════════════
+function adjustMobileViewport() {
+    const appContainer = document.getElementById("app-container");
+    if (!appContainer) return;
+
+    function updateHeight() {
+        if (window.visualViewport) {
+            const height = window.visualViewport.height;
+            const offsetTop = window.visualViewport.offsetTop;
+            
+            // Only apply on mobile/tablet viewports (width <= 1024px)
+            if (window.innerWidth <= 1024) {
+                appContainer.style.height = `${height}px`;
+                appContainer.style.top = `${offsetTop}px`;
+                window.scrollTo(0, 0);
+            } else {
+                appContainer.style.height = "";
+                appContainer.style.top = "";
+            }
+            scrollToBottom();
+        }
+    }
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", updateHeight);
+        window.visualViewport.addEventListener("scroll", updateHeight);
+    }
+    window.addEventListener("resize", updateHeight);
+    
+    // Initial update
+    updateHeight();
+}
+
+// ══════════════════════════════════════════
 // BOOT SEQUENCE
 // ══════════════════════════════════════════
 window.addEventListener("DOMContentLoaded", () => {
+    // Run mobile viewport adjustment
+    adjustMobileViewport();
+
     // Run intro animation
     runIntro();
 
